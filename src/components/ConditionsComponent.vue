@@ -27,11 +27,11 @@ function removeName(id) {
 <p v-for="num in tab" :key="num">{{ num }}</p>
 
 <input type="text" v-model="newName">
-<button @click="addName">Ajouter le nom</button>
+<button @click.prevent="addName">Ajouter le nom</button>
 
 <div v-for="obj in listObject" :key="obj.id">
     <span>{{ obj.id }} : </span>
-    <button @click="removeName(obj.id)">Supprimer</button>
+    <button @click.prevent="removeName(obj.id)">Supprimer</button>
     <h4>{{ obj.name }}</h4>
 </div>
     
