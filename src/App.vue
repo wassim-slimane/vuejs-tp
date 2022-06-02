@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import MainComponentVue from "./components/MainComponent.vue";
+import LoopComponentVue from "./components/LoopComponent.vue";
 import ConditionsComponentVue from "./components/ConditionsComponent.vue";
 
 </script>
