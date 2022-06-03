@@ -1,0 +1,14 @@
+<script setup>
+</script>
+
+<template>
+
+<button class="btn btn-primary">Valider</button>
+    
+</template>
+
+<style>
+
+@import'bootstrap/dist/css/bootstrap.css'
+
+</style>
