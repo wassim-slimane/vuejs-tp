@@ -1,4 +1,5 @@
 <script setup>
+import { user, fakeLogin, logout } from "../services/userStore";
 </script>
 
 <template>
@@ -24,6 +25,9 @@
       </li>
       <li class="nav-item active">
         <RouterLink class="nav-link" to="/main">Main</RouterLink>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" @click="logout">Logout</a>
       </li>
     </ul>
   </div>
