@@ -1,18 +1,16 @@
 <script setup>
-import {onMounted, ref} from "vue";
-import MainComponentVue from "./components/MainComponent.vue";
-import LoopComponentVue from "./components/LoopComponent.vue";
-import ConditionsComponentVue from "./components/ConditionsComponent.vue";
-
+import HeaderComponent from './components/HeaderComponent.vue';
 </script>
 
 <template>
-
-<h1>Page App</h1>
-<ConditionsComponentVue />
+  <HeaderComponent />
+  <div>
+    <RouterView />
+  </div>
 
 </template>
 
 <style>
+@import'bootstrap/dist/css/bootstrap.css';
 
 </style>
