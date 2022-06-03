@@ -1,14 +1,38 @@
 <script setup>
+import { ref } from "@vue/reactivity";
+import { user, fakeLogin } from "../services/userStore";
+
+const name = ref(null);
+const email = ref(null);
+
+const login = () => {
+    fakeLogin();
+    user.value.name = name.value !== null ? name.value : "wassim";
+    user.value.email = email.value !== null ? email.value : "wassim.slimane01@gmail.com"
+    console.log(user);
+}
+
 </script>
 
 <template>
-
-<button class="btn btn-primary">Valider</button>
+<h2>Connexion</h2>
+<div>
+    <form @submit.prevent="login">
+        <div class="form-groupe">
+            <label for="name">Name : </label>
+            <input class="form-control" type="text" v-model="name">
+        </div>
+        <div class="form-groupe">
+            <label for="name">email : </label>
+            <input class="form-control" type="text" v-model="email">
+        </div>
+        <button type="submit" class="btn btn-primary">Valider</button>
+    </form>
+</div>
     
 </template>
 
 <style>
 
-@import'bootstrap/dist/css/bootstrap.css'
 
 </style>
