@@ -1,23 +1,18 @@
-import { getOriginalStubFromSpecializedStub } from "@vue/test-utils/dist/stubs";
 import { ref } from "vue";
 
-const user = ref({
+export const user = ref({
     name: "Wassim",
     email: "wassim.slimane01@gmail.com",
 });
 
-const fakeLogin = () => {
+export const fakeSignin = () => {
+    console.log('signin');
+}
+
+export const fakeLogin = () => {
     console.log("login");
 }
 
-const logout = () => {
+export const logout = () => {
     console.log('logout');
 }
-
-export function useUserStore() {
-    return {
-        user,
-        fakeLogin,
-        logout,
-    };
-};
