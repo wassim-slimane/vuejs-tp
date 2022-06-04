@@ -1,5 +1,24 @@
 <script setup>
-import { user, fakeLogin, logout } from "../services/userStore";
+import { ref } from "@vue/reactivity";
+import { onMounted, watch } from "@vue/runtime-core";
+import { user, fakeLogout } from "../services/userStore";
+
+const logged = ref(false);
+
+onMounted(() => {
+  if(localStorage.user) {
+    logged.value = true;
+  }
+});
+
+const logout = () => {
+  fakeLogout();
+  user.value = null;
+  if(localStorage.user) {
+    localStorage.removeItem('user');
+  }
+  console.log(user.value);
+}
 </script>
 
 <template>
@@ -9,7 +28,8 @@ import { user, fakeLogin, logout } from "../services/userStore";
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <RouterLink class="nav-link" to="/">Hey ...</RouterLink>
+        <RouterLink v-if="logged" class="nav-link" to="/">Hey</RouterLink>
+        <RouterLink v-else class="nav-link" to="/">Welcome</RouterLink>
       </li>
       <li class="nav-item active">
         <RouterLink class="nav-link" to="/inscription">Inscription</RouterLink>

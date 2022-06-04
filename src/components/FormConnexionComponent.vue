@@ -7,9 +7,12 @@ const email = ref(null);
 
 const login = () => {
     fakeLogin();
-    user.value.name = name.value !== null ? name.value : "wassim";
-    user.value.email = email.value !== null ? email.value : "wassim.slimane01@gmail.com"
-    console.log(user);
+    user.value = {
+        name: name.value ? name.value : "wassim",
+        email: email.value ? email.value : "wassim.slimane01@gmail.com",
+    };
+    localStorage.user = JSON.stringify(user.value);
+    console.log(localStorage.user);
 }
 
 </script>

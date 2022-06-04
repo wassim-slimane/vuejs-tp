@@ -13,6 +13,6 @@ export const fakeLogin = () => {
     console.log("login");
 }
 
-export const logout = () => {
+export const fakeLogout = () => {
     console.log('logout');
 }

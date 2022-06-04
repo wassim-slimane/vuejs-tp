@@ -1,10 +1,12 @@
 <script setup>
 import {onMounted, ref, watch} from "vue";
 import * as jose from 'jose';
+import axios from "axios";
 
 const counter = ref(0);
 const token = ref(null);
 const tokenStocked = ref(null);
+const data = ref(null);
 
 onMounted(() => {
   if(localStorage.jwt) {
@@ -26,6 +28,21 @@ function submit() {
   }
 }
 
+async function getRequest() {
+  if(localStorage.jwt) {
+    try {
+      const result = await axios.get('http://127.0.0.1:8080/moncompte', {
+        headers: {
+          "x-auth-token": localStorage.jwt,
+        },
+      });
+      data.value = result.data;
+    } catch(error) {
+      console.log("Error : " + error.message);
+    }
+  }
+}
+
 </script>
 
 <template>
@@ -41,6 +58,8 @@ function submit() {
   <p v-if="tokenStocked">JWT stocké : {{ tokenStocked }}</p>
   <p v-else>Pas de JWT stocké</p>
 </form>
+<button @click.prevent="getRequest" class="btn btn-primary">GET Request</button>
+<p>{{ data }}</p>
 </template>
 
 <style>
